@@ -108,9 +108,17 @@ $(function() {
 	$('.create-column')
 		.click(function(){
 			var name = prompt('Enter a column name');
-			var column = new Column(name);
+			if (name==="") {
+				name = "No name given";
+			}
+			if (name) {
+				var column = new Column(name);
+			}
 			board.addColumn(column);
+
 		});
+
+
 
 	// CREATING COLUMNS
 	var todoColumn = new Column('To do');
