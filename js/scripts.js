@@ -31,7 +31,17 @@ $(function() {
 			});
 
 			$columnAddCard.click(function() {
-				self.addCard(new Card(prompt("Enter the name of the card")));
+				// self.addCard(new Card(prompt("Enter the name of the card")));
+
+				var name = prompt("Enter the name of the card");
+				
+				if (name === "") {
+ 					name = 'No name given';
+				} 
+				if (name) {
+					var card = new Card(name);
+					self.addCard(card);
+				}
 			});
     // CONSTRUCTION COLUMN ELEMENT
 			$column.append($columnTitle)
@@ -76,9 +86,8 @@ $(function() {
 // COMBINING BLOCKS AND RETURNING THE CARD
 			$card.append($cardDelete)
 			.append($cardDescription);
-			
-			return $card;
 
+			return $card;
 		}
 	}
 
@@ -115,7 +124,6 @@ $(function() {
 				var column = new Column(name);
 			}
 			board.addColumn(column);
-
 		});
 
 
@@ -137,5 +145,4 @@ $(function() {
 	// ADDING CARDS TO COLUMNS
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
-
 });
